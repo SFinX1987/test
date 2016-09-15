@@ -35,6 +35,20 @@ var pastChats = [{
     past: function() {
       return pastChats;
     },
+	
+    add: function(newName, newText, newDateTime, newFace) {
+	var maxId = 0;
+	for (index = 0; index < upcomingChats.length; ++index) {
+		if(maxId < upcomingChats[index].id)
+			maxId = upcomingChats[index].id;
+	  }
+      upcomingChats.push({
+		id: 2,
+		name: newName,
+		lastText: newText,
+		face: 'img/Sergey.jpg'
+	  });
+    },
     remove: function(chat) {
       upcomingChats.splice(upcomingChats.indexOf(chat), 1);
     },

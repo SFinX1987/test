@@ -19,7 +19,15 @@ angular.module('starter.controllers', [])
 	$scope.pastChats = Chats.past();
 })
 
-.controller('AddCtrl', function ($scope) {
+.controller('AddCtrl', function ($scope, $state, Chats) {
 	
+	$scope.datetimeValue = new Date();
+	$scope.datetimeValue.setHours(12 , 00, 00, 00)
+  
+	$scope.add = function(name, description, datetime) {
+    Chats.add(name, description, datetime, null);
+	
+	$state.go('tab.upcoming');
+  };
 });
 

@@ -8,10 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', "ion-datetime-picker"])
 
 .run(function($ionicPlatform, $rootScope) {
-  
-  $rootScope.datetimeValue = new Date();
-  $rootScope.datetimeValue.setHours(12 , 00, 00, 00)
-    
+      
   $rootScope.go = function() {
       window.open("http://github.com/katemihalikova/ion-datetime-picker", "_blank");
   };

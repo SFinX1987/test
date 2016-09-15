@@ -1,9 +1,20 @@
 <ion-view view-title="New meeting">
   <ion-content class="padding">
+
+	<ion-input>
+		<ion-label primary>Name</ion-label>
+		<input placeholder="Enter your name" ng-model="nameValue" type="text" value={{nameValue}}>
+	</ion-input>
+	<ion-input>
+		<ion-label primary>Description</ion-label>
+		<input placeholder="Enter event's description" ng-model="descriptionValue" type="text" value={{descriptionValue}}>
+	</ion-input>
+	
 	<div class="item item-icon-left" ion-datetime-picker ng-model="datetimeValue">
 		<i class="icon ion-ios-calendar positive"></i>
 		Start time:
 		<strong>{{datetimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
 	</div>
+	<button fab-center ng-click="add(nameValue, descriptionValue, datetimeValue)">Add</button>
   </ion-content>
 </ion-view>
