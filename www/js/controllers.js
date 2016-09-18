@@ -1,5 +1,36 @@
 angular.module('starter.controllers', [])
 
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+  $scope.data = {};
+ 
+    $scope.login = function() {
+		LoginService.loginUser($scope.data.PhoneNumber, $scope.data.Code).success(function(data){
+			$state.go('contact-settings');
+		}).error(function(data) {
+			var alertPopup = $ionicPopup.alert({
+				title: 'Login failed!',
+				template:'Please check your credentials...'
+			})
+		})
+    }
+})
+
+.controller('ContactSettingsCtrl', function($scope, Chats, $ionicPopup, $state) {
+  $scope.data = {};
+ 
+    $scope.save = function() {
+		if(isEmpty($scope.data.FirstName) || isEmpty($scope.data.LastName) || isEmpty($scope.data.PhoneNumber)){
+			var alertPopup = $ionicPopup.alert({
+				title: 'Action failed!',
+				template:'Please fill all fields...'
+			})
+		}
+		else{
+			Chats.saveContactSettings($scope.data.FirstName, $scope.data.LastName, $scope.data.PhoneNumber);
+			$state.go('tab.upcoming');
+		}
+    }
+})
 
 .controller('UpcomingCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -22,7 +53,7 @@ angular.module('starter.controllers', [])
 .controller('AddCtrl', function ($scope, $state, Chats) {
 	
 	$scope.datetimeValue = new Date();
-	$scope.datetimeValue.setHours(12 , 00, 00, 00)
+	$scope.datetimeValue.setHours(14 , 00, 00, 00)
   
 	$scope.add = function(name, description, datetime) {
     Chats.add(name, description, datetime, null);
@@ -31,3 +62,8 @@ angular.module('starter.controllers', [])
   };
 });
 
+
+
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}

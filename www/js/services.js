@@ -21,7 +21,7 @@ angular.module('starter.services', [])
     face: 'img/Dror.jpg'
 
   }];
-var pastChats = [{
+  var pastChats = [{
     id: 0,
     name: 'Avi Asaf',
     lastText: 'Fisrt meeting',
@@ -59,6 +59,33 @@ var pastChats = [{
         }
       }
       return null;
-    }
+    },
+	saveContactSettings: function(FirstName, LastName, PhoneNumber){
+		
+	}
   };
+})
+
+.service('LoginService', function($q) {
+    return {
+        loginUser: function(phone, code) {
+            var deferred = $q.defer();
+            var promise = deferred.promise;
+ 
+            if (phone == '054' && code == '1111') {
+                deferred.resolve('Welcome ' + phone + '!');
+            } else {
+                deferred.reject('Wrong credentials.');
+            }
+            promise.success = function(fn) {
+                promise.then(fn);
+                return promise;
+            }
+            promise.error = function(fn) {
+                promise.then(null, fn);
+                return promise;
+            }
+            return promise;
+        }
+    }
 });

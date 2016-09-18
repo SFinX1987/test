@@ -1,1 +1,23 @@
-/* Empty. Add your own CSS if you like */
+.color-blue, 
+.button-plus{
+	color: #387EF5;
+}
+
+.button-plus{
+	
+}
+
+.position-bottom-centerqqqqqq{
+  position:absolute;
+  margin-left:-15px;
+  bottom:-20px;
+}
+.position-bottom-center{
+    position: absolute;
+    right:0;
+    bottom: 30;
+    border-style: solid;
+    border-top-width: 1px;
+    background-size: 0;
+    line-height: 49px;
+	}

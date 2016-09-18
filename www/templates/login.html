@@ -1,0 +1,16 @@
+<ion-view view-title="Login" name="login-view">
+  <ion-content class="padding">
+      <div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="Phone number" ng-model="data.PhoneNumber">
+        </label>
+		<button class="button button-block button-calm" ng-click="sendCodeSms()">Send SMS with code</button>
+      <div class="list list-inset">
+      </div>
+        <label class="item item-input">
+            <input type="text" placeholder="Received code" ng-model="data.Code">
+        </label>
+		<button class="button button-block button-calm" ng-click="login()">Login</button>
+      </div>
+  </ion-content>
+</ion-view>
