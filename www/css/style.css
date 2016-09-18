@@ -4,8 +4,19 @@
 }
 
 .button-plus{
-	
+  font-size: 60px;
+  margin-left:75%;
+  margin-top:30px;
 }
+
+.photo-settings{
+  border-radius:100%;
+  width:50%;
+  display: block;
+  margin: auto;
+  margin-bottom:25px;
+}
+
 
 .position-bottom-centerqqqqqq{
   position:absolute;

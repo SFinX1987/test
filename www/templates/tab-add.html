@@ -1,20 +1,42 @@
 <ion-view view-title="New meeting">
   <ion-content class="padding">
-
-	<ion-input>
-		<ion-label primary>Name</ion-label>
-		<input placeholder="Enter your name" ng-model="nameValue" type="text" value={{nameValue}}>
-	</ion-input>
-	<ion-input>
-		<ion-label primary>Description</ion-label>
-		<input placeholder="Enter event's description" ng-model="descriptionValue" type="text" value={{descriptionValue}}>
-	</ion-input>
-	
-	<div class="item item-icon-left" ion-datetime-picker ng-model="datetimeValue">
-		<i class="icon ion-ios-calendar positive"></i>
-		Start time:
-		<strong>{{datetimeValue| date: "yyyy-MM-dd H:mm"}}</strong>
+	<div class="list list-inset">
+		<label class="item item-input item-floating-label">
+			<span class="input-label">Meeting name</span>
+			<input type="text" placeholder="Meeting name" ng-model="data.Name">
+		</label>
+		<label class="item item-input item-floating-label">
+			<span class="input-label">Place</span>
+			<input type="text" placeholder="Place" ng-model="data.Place">
+			</input>
+		</label>
+		<label class="item item-input item-floating-label">
+			<span class="input-label">Description</span>
+			<input type="text" placeholder="Description" ng-model="data.Description">
+			</input>
+		</label>
+		<div class="item item-icon-left" ion-datetime-picker minute-step=15 ng-model="data.StartTime">
+			<i class="icon ion-ios-calendar positive"></i>
+			Start time:
+			<strong>{{data.StartTime| date: "yyyy-MM-dd HH:mm"}}</strong>
+		</div>
+		<div class="item item-icon-left" ion-datetime-picker time minute-step=15 ng-model="data.Duration">
+			<i class="icon ion-ios-timer-outline positive"></i>
+			Duration:
+			<strong>{{data.Duration| date: "HH:mm"}}</strong>
+		</div>
+		<label class="item item-input item-floating-label">
+			<span class="input-label">Repeat</span>
+			<input type="text" placeholder="Repeat" ng-model="data.Repeat">
+			</input>
+		</label>
+		<ion-checkbox ng-model="data.isSendNotification">Send notifications</ion-checkbox>
+		<label class="item item-floating-label">
+			<span class="input-label">Minimum participants</span>
+			<input type="number" placeholder="Minimum participants" ng-model="data.MinParticipants">
+			</input>
+		</label>
+		<button class="button button-block button-calm" ng-click="add()">Add</button>
 	</div>
-	<button class="button button-block button-calm" ng-click="add(nameValue, descriptionValue, datetimeValue)">Add</button>
   </ion-content>
 </ion-view>

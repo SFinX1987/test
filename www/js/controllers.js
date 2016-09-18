@@ -13,6 +13,9 @@ angular.module('starter.controllers', [])
 			})
 		})
     }
+	$scope.facebookLogin = function(){
+		$state.go('contact-settings');
+	}
 })
 
 .controller('ContactSettingsCtrl', function($scope, Chats, $ionicPopup, $state) {
@@ -51,9 +54,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AddCtrl', function ($scope, $state, Chats) {
-	
-	$scope.datetimeValue = new Date();
-	$scope.datetimeValue.setHours(14 , 00, 00, 00)
+	$scope.data = {};
+	$scope.data.StartTime = new Date();
+	$scope.data.StartTime.setHours(12 , 00, 00, 00)
+	$scope.data.Duration = new Date();
+	$scope.data.Duration.setHours(2 , 00, 00, 00)
+	$scope.data.Repeat = "No repeat";
+	$scope.data.MinParticipants = 1;
   
 	$scope.add = function(name, description, datetime) {
     Chats.add(name, description, datetime, null);

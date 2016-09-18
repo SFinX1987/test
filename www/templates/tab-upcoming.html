@@ -1,7 +1,7 @@
 <ion-view view-title="Upcoming">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in upcomingChats" type="item-text-wrap" href="#/tab/upcoming/{{chat.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in upcomingChats" type="item-text-wrap" href="#/tab/upcoming">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.lastText}}</p>
@@ -13,8 +13,8 @@
       </ion-item>
     </ion-list>
 	
-	<a href="#/tab/add" class="button button-icon position-bottom-center" ng-click="add(nameValue, descriptionValue, datetimeValue)">
-        <i class="icon ion-plus-circled button-plus button-calm"></i>
+	<a href="#/tab/add" class="button button-icon button-plus" ng-click="add(nameValue, descriptionValue, datetimeValue)">
+        <i class="ion-plus-circled"></i>
     </a>
 	
 	
