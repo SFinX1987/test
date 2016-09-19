@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('ContactSettingsCtrl', function($scope, Chats, $ionicPopup, $state) {
+.controller('ContactSettingsCtrl', function($scope, Meetings, $ionicPopup, $state) {
   $scope.data = {};
  
     $scope.save = function() {
@@ -29,13 +29,13 @@ angular.module('starter.controllers', [])
 			})
 		}
 		else{
-			Chats.saveContactSettings($scope.data.FirstName, $scope.data.LastName, $scope.data.PhoneNumber);
+			Meetings.saveContactSettings($scope.data.FirstName, $scope.data.LastName, $scope.data.PhoneNumber);
 			$state.go('tab.upcoming');
 		}
     }
 })
 
-.controller('UpcomingCtrl', function($scope, Chats) {
+.controller('UpcomingCtrl', function($scope, Meetings) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -44,16 +44,20 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.upcomingChats = Chats.upcoming();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.upcomingMeetings = Meetings.upcoming();
+  $scope.remove = function(meeting) {
+    Meetings.remove(meeting);
   };
 })
-.controller('PastCtrl', function($scope, Chats) {
-	$scope.pastChats = Chats.past();
+.controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
+  $scope.meeting = Meetings.get($stateParams.meetingId);
 })
 
-.controller('AddCtrl', function ($scope, $state, Chats) {
+.controller('PastCtrl', function($scope, Meetings) {
+	$scope.pastMeetings = Meetings.past();
+})
+
+.controller('AddCtrl', function ($scope, $state, Meetings) {
 	$scope.data = {};
 	$scope.data.StartTime = new Date();
 	$scope.data.StartTime.setHours(12 , 00, 00, 00)
@@ -63,7 +67,7 @@ angular.module('starter.controllers', [])
 	$scope.data.MinParticipants = 1;
   
 	$scope.add = function(name, description, datetime) {
-    Chats.add(name, description, datetime, null);
+    Meetings.add($scope.data.Name, $scope.data.Description, $scope.data.StartTime, null);
 	
 	$state.go('tab.upcoming');
   };

@@ -1,27 +1,60 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Meetings', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var upcomingChats = [{
+  var upcomingMeetings = [{
     id: 0,
-    name: 'Sergey Naumenko',
+    name: 'First meeting',
     lastText: 'JavaScript lesson',
-    face: 'img/Sergey.jpg'
+    creator:{ 
+		name: 'Sergey Naumenko',
+		face: 'img/Sergey.jpg',
+		statusIcon: 'ion-checkmark-circled',
+		statusColor: 'green'
+	},
+	participants:[{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg',
+			statusIcon: 'ion-checkmark-circled',
+			statusColor: 'green'
+		},{
+			name: 'Avi Asaf',
+			face: 'img/Avi.jpg',
+			statusIcon: 'ion-help-circled',
+			statusColor: 'blue'
+		},{
+			name: 'Dror Abraham',
+			face: 'img/Dror.jpg',
+			statusIcon: 'ion-close-circled',
+			statusColor: 'red'
+		}
+	]
+	
   }, {
     id: 1,          
-    name: 'Avi Asaf',
+    name: 'Second meeting',
     lastText: 'Concept review',
-    face: 'img/Avi.jpg'
+    creator:{ 
+		name: 'Avi Asaf',
+		face: 'img/Avi.jpg',
+		statusIcon: 'ion-checkmark-circled',
+		statusColor: 'green'
+	},
   }, {
     id: 2,
-    name: 'Dror Abraham',
+    name: 'Third and the last meeting meanwhile',
     lastText: 'Status meeting',
-    face: 'img/Dror.jpg'
+    creator:{ 
+		name: 'Dror Abraham',
+		face: 'img/Dror.jpg',
+		statusIcon: 'ion-checkmark-circled',
+		statusColor: 'green'
+	},
 
   }];
-  var pastChats = [{
+  var pastMeetings = [{
     id: 0,
     name: 'Avi Asaf',
     lastText: 'Fisrt meeting',
@@ -30,32 +63,32 @@ angular.module('starter.services', [])
   
   return {
     upcoming: function() {
-      return upcomingChats;
+      return upcomingMeetings;
     },
     past: function() {
-      return pastChats;
+      return pastMeetings;
     },
 	
-    add: function(newName, newText, newDateTime, newFace) {
+    add: function(newName, newDescription, newDateTime, newFace) {
 	var maxId = 0;
-	for (index = 0; index < upcomingChats.length; ++index) {
-		if(maxId < upcomingChats[index].id)
-			maxId = upcomingChats[index].id;
+	for (index = 0; index < upcomingMeetings.length; ++index) {
+		if(maxId < upcomingMeetings[index].id)
+			maxId = upcomingMeetings[index].id;
 	  }
-      upcomingChats.push({
+      upcomingMeetings.push({
 		id: 2,
 		name: newName,
-		lastText: newText,
+		lastText: newDescription,
 		face: 'img/Sergey.jpg'
 	  });
     },
-    remove: function(chat) {
-      upcomingChats.splice(upcomingChats.indexOf(chat), 1);
+    remove: function(meeting) {
+      upcomingMeetings.splice(upcomingMeetings.indexOf(meeting), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < upcomingChats.length; i++) {
-        if (upcomingChats[i].id === parseInt(chatId)) {
-          return upcomingChats[i];
+    get: function(meetingId) {
+      for (var i = 0; i < upcomingMeetings.length; i++) {
+        if (upcomingMeetings[i].id === parseInt(meetingId)) {
+          return upcomingMeetings[i];
         }
       }
       return null;

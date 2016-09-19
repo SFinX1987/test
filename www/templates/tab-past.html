@@ -1,10 +1,10 @@
 <ion-view view-title="Past">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in pastChats" type="item-text-wrap" href="#/tab/past">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="meeting in pastMeetings" type="item-text-wrap" href="#/tab/past">
+        <img ng-src="{{meeting.face}}">
+        <h2>{{meeting.name}}</h2>
+        <p>{{meeting.lastText}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>

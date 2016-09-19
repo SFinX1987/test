@@ -56,6 +56,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', "
     templateUrl: 'templates/contact-settings.html',
 	controller: 'ContactSettingsCtrl'
   })
+    .state('add-meeting', {
+      url: '/add',
+	  templateUrl: 'templates/add-meeting.html',
+	  controller: 'AddCtrl'
+    })
   
   .state('tab.upcoming', {
     url: '/upcoming',
@@ -66,6 +71,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', "
       }
     }
   })
+  .state('tab.upcoming-detail', {
+    url: '/upcoming/:meetingId',
+    views: {
+      'tab-upcoming': {
+        templateUrl: 'templates/upcoming-detail.html',
+        controller: 'UpcomingDetailCtrl'
+      }
+    }
+  })
 
   .state('tab.past', {
       url: '/past',
@@ -73,15 +87,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', "
         'tab-past': {
           templateUrl: 'templates/tab-past.html',
           controller: 'PastCtrl'
-        }
-      }
-    })
-    .state('tab.add', {
-      url: '/add',
-      views: {
-        'tab-add': {
-          templateUrl: 'templates/tab-add.html',
-          controller: 'AddCtrl'
         }
       }
     });
