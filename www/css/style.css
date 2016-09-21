@@ -17,12 +17,6 @@
   margin-bottom:25px;
 }
 
-
-.position-bottom-centerqqqqqq{
-  position:absolute;
-  margin-left:-15px;
-  bottom:-20px;
-}
 .position-bottom-center{
     position: absolute;
     right:0;
@@ -31,4 +25,5 @@
     border-top-width: 1px;
     background-size: 0;
     line-height: 49px;
-	}
+}
+	

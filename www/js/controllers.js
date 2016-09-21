@@ -51,13 +51,42 @@ angular.module('starter.controllers', [])
 })
 .controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
   $scope.meeting = Meetings.get($stateParams.meetingId);
+  
+    
+	setButtonsColorAccordingToStatus = function(status){
+	    $scope.ColorGoing = 'gray';
+	    $scope.ColorNotGoing = 'gray';
+	    $scope.ColorNotSure = 'gray';
+		switch(status) {
+		case 0:
+			$scope.ColorNotGoing = 'red';
+			break;
+		case 1:
+			$scope.ColorNotSure = 'blue';
+			break;
+		case 2:
+			$scope.ColorGoing = 'green';
+			break;
+		default:
+			$scope.ColorNotSure = 'blue';
+	  }
+	}
+	
+  setButtonsColorAccordingToStatus($scope.meeting.me.status);
+	
+	$scope.setStatus = function(newStatus) {
+		Meetings.setStatus($scope.meeting.id, newStatus);
+		$scope.meeting = Meetings.get($stateParams.meetingId);
+		setButtonsColorAccordingToStatus($scope.meeting.me.status);
+	};
+  
 })
 
 .controller('PastCtrl', function($scope, Meetings) {
 	$scope.pastMeetings = Meetings.past();
 })
 
-.controller('AddCtrl', function ($scope, $state, Meetings) {
+.controller('AddCtrl', function ($scope, $state, Meetings, $ionicPopup, $timeout) {
 	$scope.data = {};
 	$scope.data.StartTime = new Date();
 	$scope.data.StartTime.setHours(12 , 00, 00, 00)
@@ -65,12 +94,41 @@ angular.module('starter.controllers', [])
 	$scope.data.Duration.setHours(2 , 00, 00, 00)
 	$scope.data.Repeat = "No repeat";
 	$scope.data.MinParticipants = 1;
+	$scope.data.Locations = [];
   
 	$scope.add = function(name, description, datetime) {
-    Meetings.add($scope.data.Name, $scope.data.Description, $scope.data.StartTime, null);
+    Meetings.add($scope.data.Name, $scope.data.Description, $scope.data.StartTime, null, $scope.data.Location);
 	
 	$state.go('tab.upcoming');
-  };
+	};
+	
+	$scope.showLocationPopup = function() { 
+	  
+	  // An elaborate, custom popup
+	  var myPopup = $ionicPopup.show({
+		template: '<ion-google-place placeholder="Location" ng-model="data.Location"/>',
+		title: 'Enter Location',
+		scope: $scope,
+		buttons: [
+		  { text: 'Cancel' },
+		  {
+			text: '<b>Add</b>',
+			type: 'button-positive',
+			onTap: function(e) {
+			  if (!$scope.data.Location) {
+				//don't allow the user to close unless he enters wifi password
+				e.preventDefault();
+			  } else {
+				$scope.data.Locations.push({
+					text: $scope.data.Location,
+					id: $scope.data.Locations.length
+				});
+			  }
+			}
+		  }
+		]
+	  });
+	};
 });
 
 

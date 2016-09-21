@@ -7,12 +7,18 @@ angular.module('starter.services', [])
   var upcomingMeetings = [{
     id: 0,
     name: 'First meeting',
-    lastText: 'JavaScript lesson',
+    description: 'JavaScript lesson',
+	startTime: '15/09/2016 21:00',
+	endTime: '15/09/2016 23:00',
+	location: 'Air caffe Airport city',
     creator:{ 
 		name: 'Sergey Naumenko',
 		face: 'img/Sergey.jpg',
 		statusIcon: 'ion-checkmark-circled',
 		statusColor: 'green'
+	},
+	me:{
+		status: 0
 	},
 	participants:[{
 			name: 'Sergey Naumenko',
@@ -35,29 +41,75 @@ angular.module('starter.services', [])
   }, {
     id: 1,          
     name: 'Second meeting',
-    lastText: 'Concept review',
+    description: 'Concept review',
+	startTime: '08/09/2016 21:00',
+	endTime: '08/09/2016 23:00',
+	location: 'Air caffe Airport city',
     creator:{ 
 		name: 'Avi Asaf',
 		face: 'img/Avi.jpg',
 		statusIcon: 'ion-checkmark-circled',
 		statusColor: 'green'
 	},
+	me:{
+		status: 1
+	},
+	participants:[{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg',
+			statusIcon: 'ion-checkmark-circled',
+			statusColor: 'green'
+		},{
+			name: 'Avi Asaf',
+			face: 'img/Avi.jpg',
+			statusIcon: 'ion-help-circled',
+			statusColor: 'blue'
+		},{
+			name: 'Dror Abraham',
+			face: 'img/Dror.jpg',
+			statusIcon: 'ion-close-circled',
+			statusColor: 'red'
+		}
+	]
   }, {
     id: 2,
     name: 'Third and the last meeting meanwhile',
-    lastText: 'Status meeting',
+    description: 'Status meeting',
+	startTime: '10/09/2016 11:00',
+	endTime: '10/09/2016 23:00',
+	location: 'Air caffe Airport city',
     creator:{ 
 		name: 'Dror Abraham',
 		face: 'img/Dror.jpg',
 		statusIcon: 'ion-checkmark-circled',
 		statusColor: 'green'
 	},
+	me:{
+		status: 2
+	},
+	participants:[{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg',
+			statusIcon: 'ion-checkmark-circled',
+			statusColor: 'green'
+		},{
+			name: 'Avi Asaf',
+			face: 'img/Avi.jpg',
+			statusIcon: 'ion-help-circled',
+			statusColor: 'blue'
+		},{
+			name: 'Dror Abraham',
+			face: 'img/Dror.jpg',
+			statusIcon: 'ion-close-circled',
+			statusColor: 'red'
+		}
+	]
 
   }];
   var pastMeetings = [{
     id: 0,
     name: 'Avi Asaf',
-    lastText: 'Fisrt meeting',
+    description: 'Fisrt meeting',
     face: 'img/Avi.jpg'
   }];
   
@@ -69,18 +121,41 @@ angular.module('starter.services', [])
       return pastMeetings;
     },
 	
-    add: function(newName, newDescription, newDateTime, newFace) {
+    add: function(newName, newDescription, newDateTime, location, newFace) {
 	var maxId = 0;
 	for (index = 0; index < upcomingMeetings.length; ++index) {
 		if(maxId < upcomingMeetings[index].id)
 			maxId = upcomingMeetings[index].id;
 	  }
+	  maxId++;
+	  
       upcomingMeetings.push({
-		id: 2,
+		id: maxId,
 		name: newName,
-		lastText: newDescription,
-		face: 'img/Sergey.jpg'
-	  });
+		description: newDescription,
+		startTime: newDateTime,
+		endTime:  newDateTime,
+		location: location,
+		creator:{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg'
+		},
+		me:{
+			status:1
+		},
+		participants:[{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg',
+			statusIcon: 'ion-checkmark-circled',
+			statusColor: 'green'
+			},{
+			name: 'Avi Asaf',
+			face: 'img/Avi.jpg',
+			statusIcon: 'ion-help-circled',
+			statusColor: 'blue'
+			}]
+		});	
+	  	
     },
     remove: function(meeting) {
       upcomingMeetings.splice(upcomingMeetings.indexOf(meeting), 1);
@@ -92,6 +167,14 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    setStatus: function(meetingId, status) {
+      for (var i = 0; i < upcomingMeetings.length; i++) {
+        if (upcomingMeetings[i].id === parseInt(meetingId)) {
+          upcomingMeetings[i].me.status = status;
+		  return;
+        }
+      }
     },
 	saveContactSettings: function(FirstName, LastName, PhoneNumber){
 		

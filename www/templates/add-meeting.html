@@ -6,15 +6,16 @@
 			<input type="text" placeholder="Meeting name" ng-model="data.Name">
 		</label>
 		<label class="item item-input item-floating-label">
-			<span class="input-label">Place</span>
-			<input type="text" placeholder="Place" ng-model="data.Place">
-			</input>
-		</label>
-		<label class="item item-input item-floating-label">
 			<span class="input-label">Description</span>
 			<input type="text" placeholder="Description" ng-model="data.Description">
 			</input>
 		</label>
+		<label class="item item-input item-floating-label" ng-repeat="location in data.Locations">
+			<span class="input-label">Location</span>
+			<input type="text" readonly="true" placeholder="Location" ng-model="location.text">
+			</input>
+		</label>
+		<button class="button button-block button-calm" ng-click="showLocationPopup()">Add Location</button>
 		<div class="item item-icon-left" ion-datetime-picker minute-step=15 ng-model="data.StartTime">
 			<i class="icon ion-ios-calendar positive"></i>
 			Start time:

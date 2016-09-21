@@ -1,8 +1,37 @@
-<ion-view view-title="{{meeting.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{meeting.creator.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{meeting.lastText}}
-    </p>
+<ion-view view-title="Meeting">
+  <ion-content>
+    <div class="list card">
+      <div class="item item-avatar">
+		<img src="{{meeting.creator.face}}">
+        <h3>{{meeting.startTime| date: "yyyy-MM-dd HH:mm"}} - {{meeting.endTime| date: "HH:mm"}}</h3>
+        <h2>{{meeting.name}}</h2>
+        <p>{{meeting.creator.name}}</p>
+		
+      </div>
+      <div class="row">
+		  <div class="col-50">
+			<i class="ion-ios-location"></i>
+			{{meeting.location}}
+		  </div>
+		  <div class="col-50">
+			<i class="ion-android-person"></i>
+			1024 participants
+			</div>
+	  </div>
+      <div class="item item-body">
+        <p>{{meeting.description}}</p>
+      </div>
+      <div class="item tabs tabs-secondary">
+        <a class="tab-item">
+          <i class="icon ion-close-circled" style="color:{{ColorNotGoing}}" ng-click="setStatus(0)"></i>
+        </a>
+        <a class="tab-item">
+          <i class="icon big ion-help-circled" style="color:{{ColorNotSure}}" ng-click="setStatus(1)"></i>
+        </a>
+        <a class="tab-item">
+          <i class="icon ion-checkmark-circled" style="color:{{ColorGoing}}" ng-click="setStatus(2)"></i>
+        </a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
