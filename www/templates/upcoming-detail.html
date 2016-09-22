@@ -8,30 +8,39 @@
         <p>{{meeting.creator.name}}</p>
 		
       </div>
-      <div class="row">
-		  <div class="col-50">
-			<i class="ion-ios-location"></i>
-			{{meeting.location}}
-		  </div>
-		  <div class="col-50">
-			<i class="ion-android-person"></i>
-			1024 participants
-			</div>
+      <div class="item">
+			<p>
+				<i class="ion-ios-location"></i>
+				{{meeting.location}}
+			</p>
 	  </div>
       <div class="item item-body">
         <p>{{meeting.description}}</p>
       </div>
-      <div class="item tabs tabs-secondary">
-        <a class="tab-item">
-          <i class="icon ion-close-circled" style="color:{{ColorNotGoing}}" ng-click="setStatus(0)"></i>
-        </a>
-        <a class="tab-item">
-          <i class="icon big ion-help-circled" style="color:{{ColorNotSure}}" ng-click="setStatus(1)"></i>
-        </a>
-        <a class="tab-item">
-          <i class="icon ion-checkmark-circled" style="color:{{ColorGoing}}" ng-click="setStatus(2)"></i>
-        </a>
-      </div>
+      
+      <div class="item row">
+		  <div class="tab-item item-body col-33" ng-click="setStatus(0)">
+			  <i class="icon ion-close-circled" style="color:{{ColorNotGoing}}"></i>
+			  Not going
+		  </div>
+		  <div class="tab-item item-body col-33" ng-click="setStatus(1)">
+			  <i class="icon big ion-help-circled" style="color:{{ColorNotSure}}"></i>
+			  Not sure
+		  </div>
+		  <div class="tab-item item-body col-33" ng-click="setStatus(2)">
+			  <i class="icon ion-checkmark-circled" style="color:{{ColorGoing}}"></i>
+			  Going
+		  </div>
+	  </div>
+      <div class="item row">
+		  <div class="tab-item item-body col-77">
+		  </div>
+		  <div class="tab-item item-body col-33" ng-click="needARidePressed()">
+			  <i class="icon ion-android-car" style="color:{{ColorNeedARide}}"></i>
+			  Need a ride
+		  </div>
+	  </div>
+	  
     </div>
   </ion-content>
 </ion-view>

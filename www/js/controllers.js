@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 })
 .controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
   $scope.meeting = Meetings.get($stateParams.meetingId);
-  
+  $scope.ColorNeedARide = 'gray';
     
 	setButtonsColorAccordingToStatus = function(status){
 	    $scope.ColorGoing = 'gray';
@@ -72,7 +72,7 @@ angular.module('starter.controllers', [])
 	  }
 	}
 	
-  setButtonsColorAccordingToStatus($scope.meeting.me.status);
+	setButtonsColorAccordingToStatus($scope.meeting.me.status);
 	
 	$scope.setStatus = function(newStatus) {
 		Meetings.setStatus($scope.meeting.id, newStatus);
@@ -80,6 +80,14 @@ angular.module('starter.controllers', [])
 		setButtonsColorAccordingToStatus($scope.meeting.me.status);
 	};
   
+	$scope.needARidePressed = function(){
+		if($scope.ColorNeedARide == 'gray'){
+			$scope.ColorNeedARide = 'green';
+		}
+		else{
+			$scope.ColorNeedARide = 'gray';
+		}
+	} 
 })
 
 .controller('PastCtrl', function($scope, Meetings) {
