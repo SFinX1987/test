@@ -1,5 +1,16 @@
-<ion-view view-title="History">
-  <ion-content>
+<ion-view view-title="Past">
+	<div class="bar bar-subheader item-input-inset" >
+		<label class="item-input-wrapper textbox-search">
+			<i class="icon ion-search placeholder-icon"></i>
+			<input type="search" placeholder="Search">
+		</label>
+		<div class="buttons">
+			<button class="button button-icon ion-android-more-vertical" ng-click="popover.show($event)">
+			</button>
+		</div>
+	</div>
+  <ion-content class="has-subheader">
+  
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="meeting in pastMeetings" type="item-text-wrap" href="#/tab/past">
         <img ng-src="{{meeting.face}}">

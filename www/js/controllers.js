@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('UpcomingCtrl', function($scope, Meetings) {
+.controller('UpcomingCtrl', function($scope, Meetings, $ionicPopover, $ionicPopup) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -48,6 +48,19 @@ angular.module('starter.controllers', [])
   $scope.remove = function(meeting) {
     Meetings.remove(meeting);
   };
+  
+  $ionicPopover.fromTemplateUrl('templates/popup-main.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+  
+	$scope.AviEgzim = function(){
+		var alertPopup = $ionicPopup.alert({
+				title: 'עוד לא מימשתי את זה!!!',
+				template:'אבי, הגזמת...'
+			})
+	};
 })
 .controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
   $scope.meeting = Meetings.get($stateParams.meetingId);
@@ -90,8 +103,22 @@ angular.module('starter.controllers', [])
 	} 
 })
 
-.controller('PastCtrl', function($scope, Meetings) {
+.controller('PastCtrl', function($scope, Meetings,  $ionicPopup, $ionicPopover) {
 	$scope.pastMeetings = Meetings.past();
+	
+	$scope.AviEgzim = function(){
+		var alertPopup = $ionicPopup.alert({
+				title: 'עוד לא מימשתי את זה!!!',
+				template:'אבי, הגזמת...'
+			})
+	};
+	
+  $ionicPopover.fromTemplateUrl('templates/popup-main.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+  
 })
 
 .controller('AddCtrl', function ($scope, $state, Meetings, $ionicPopup, $timeout) {
