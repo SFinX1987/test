@@ -26,5 +26,7 @@
     background-size: 0;
     line-height: 49px;
 }
-
+.platform-android .bar-subheader{
+  top:93px;
+}
 	
