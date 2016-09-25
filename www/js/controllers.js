@@ -33,6 +33,13 @@ angular.module('starter.controllers', [])
 			$state.go('tab.upcoming');
 		}
     }
+	
+	$scope.WannaBanana = function(){
+		var alertPopup = $ionicPopup.alert({
+				title: 'Whooopsie...',
+				template:'Do you wanna banana?'
+			})
+	};
 })
 
 .controller('UpcomingCtrl', function($scope, Meetings, $ionicPopover, $ionicPopup, $ionicFilterBar) {
