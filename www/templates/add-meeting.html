@@ -3,40 +3,29 @@
 	<div class="list list-inset">
 		<label class="item item-input item-floating-label">
 			<span class="input-label">Meeting name</span>
-			<input type="text" placeholder="Meeting name" ng-model="data.Name">
+			<input type="text" placeholder="Meeting name" ng-model="data.name">
 		</label>
 		<label class="item item-input item-floating-label">
 			<span class="input-label">Description</span>
-			<input type="text" placeholder="Description" ng-model="data.Description">
+			<input type="text" placeholder="Description" ng-model="data.description">
 			</input>
 		</label>
-		<label class="item item-input item-floating-label" ng-repeat="location in data.Locations">
+		<label class="item item-input item-floating-label">
 			<span class="input-label">Location</span>
-			<input type="text" readonly="true" placeholder="Location" ng-model="location.text">
+			<input type="text" placeholder="Location" id="Autocomplete" ng-autocomplete ng-model="data.location" ng-focus="disableTap()">
 			</input>
-		</label>
-		<button class="button button-block button-calm" ng-click="showLocationPopup()">Add Location</button>
-		<div class="item item-icon-left" ion-datetime-picker minute-step=15 ng-model="data.StartTime">
+		</label>		
+		<div class="item item-icon-left" ion-datetime-picker minute-step=15 ng-model="data.startTime">
 			<i class="icon ion-ios-calendar positive"></i>
 			Start time:
-			<strong>{{data.StartTime| date: "yyyy-MM-dd HH:mm"}}</strong>
+			<strong>{{data.startTime| date: "yyyy-MM-dd HH:mm"}}</strong>
 		</div>
-		<div class="item item-icon-left" ion-datetime-picker time minute-step=15 ng-model="data.Duration">
+		<div class="item item-icon-left" ion-datetime-picker time minute-step=15 ng-model="data.duration">
 			<i class="icon ion-ios-timer-outline positive"></i>
 			Duration:
-			<strong>{{data.Duration| date: "HH:mm"}}</strong>
+			<strong>{{data.duration| date: "HH:mm"}}</strong>
 		</div>
-		<label class="item item-input item-floating-label">
-			<span class="input-label">Repeat</span>
-			<input type="text" placeholder="Repeat" ng-model="data.Repeat">
-			</input>
-		</label>
 		<ion-checkbox ng-model="data.isSendNotification">Send notifications</ion-checkbox>
-		<label class="item item-floating-label">
-			<span class="input-label">Minimum participants</span>
-			<input type="number" placeholder="Minimum participants" ng-model="data.MinParticipants">
-			</input>
-		</label>
 		<button class="button button-block button-calm" ng-click="add()">Add</button>
 	</div>
   </ion-content>

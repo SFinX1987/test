@@ -160,47 +160,30 @@ angular.module('starter.controllers', [])
 
 .controller('AddCtrl', function ($scope, $state, Meetings, $ionicPopup, $timeout) {
 	$scope.data = {};
-	$scope.data.StartTime = new Date();
-	$scope.data.StartTime.setHours(12 , 00, 00, 00)
-	$scope.data.Duration = new Date();
-	$scope.data.Duration.setHours(2 , 00, 00, 00)
-	$scope.data.Repeat = "No repeat";
-	$scope.data.MinParticipants = 1;
-	$scope.data.Locations = [];
+	$scope.data.startTime = new Date();
+	$scope.data.startTime.setHours(12 , 00, 00, 00)
+	$scope.data.duration = new Date();
+	$scope.data.duration.setHours(2 , 00, 00, 00)
+	$scope.data.repeat = "No repeat";
+	$scope.data.minParticipants = 1;
+	$scope.data.location = "";
   
 	$scope.add = function(name, description, datetime) {
-    Meetings.add($scope.data.Name, $scope.data.Description, $scope.data.StartTime, null, $scope.data.Location);
+    Meetings.add($scope.data.name, $scope.data.description, $scope.data.startTime, null, $scope.data.location);
 	
 	$state.go('tab.upcoming');
 	};
 	
-	$scope.showLocationPopup = function() { 
-	  
-	  // An elaborate, custom popup
-	  var myPopup = $ionicPopup.show({
-		template: '<ion-google-place placeholder="Location" ng-model="data.Location"/>',
-		title: 'Enter Location',
-		scope: $scope,
-		buttons: [
-		  { text: 'Cancel' },
-		  {
-			text: '<b>Add</b>',
-			type: 'button-positive',
-			onTap: function(e) {
-			  if (!$scope.data.Location) {
-				//don't allow the user to close unless he enters wifi password
-				e.preventDefault();
-			  } else {
-				$scope.data.Locations.push({
-					text: $scope.data.Location,
-					id: $scope.data.Locations.length
-				});
-			  }
-			}
-		  }
-		]
-	  });
-	};
+	 $scope.disableTap = function(){
+    container = document.getElementsByClassName('pac-container');
+    // disable ionic data tab
+    angular.element(container).attr('data-tap-disabled', 'true');
+    // leave input field if google-address-entry is selected
+    angular.element(container).on("click", function(){
+        document.getElementById('Autocomplete').blur();
+    });
+  };
+	
 });
 
 

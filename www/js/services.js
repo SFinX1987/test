@@ -150,7 +150,7 @@ angular.module('starter.services', [])
       return pastMeetings;
     },
 	
-    add: function(newName, newDescription, newDateTime, location, newFace) {
+    add: function(newName, newDescription, newDateTime, newFace, location) {
 	var maxId = 0;
 	for (index = 0; index < upcomingMeetings.length; ++index) {
 		if(maxId < upcomingMeetings[index].id)
