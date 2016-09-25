@@ -203,9 +203,32 @@ angular.module('starter.controllers', [])
         document.getElementById('Autocomplete').blur();
 		});
 	};
+})
+
+.controller('ChatCtrl', function ($scope, $stateParams, $timeout, Chat, Settings) {
+	
+  $scope.data = {};
+  $scope.data.message = "";
+  $scope.messages = Chat.getMessages();
+  
+  $scope.messageIsMine = function(phoneNumber){
+    return Settings.getPhoneNumber() === phoneNumber;
+  };
+
+  $scope.getBubbleClass = function(phoneNumber){
+    var classname = 'from-them';
+    if($scope.messageIsMine(phoneNumber)){
+      classname = 'from-me';
+    }
+    return classname;
+  };
+
+  $scope.sendMessage = function(text){
+    Chat.sendMessage(Settings.getName(), Settings.getPhoto(), Settings.getPhoneNumber(),text);
+    $scope.data.message = "";
+  };
+
 });
-
-
 
 function isEmpty(str) {
     return (!str || 0 === str.length);

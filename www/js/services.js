@@ -1,5 +1,30 @@
 angular.module('starter.services', [])
 
+.factory('Settings', function(){
+	var firstName="";
+	var lastName="";
+	var phoneNumber="";
+	var photo="img/default.jpg";
+	
+	return{
+		getName:function(){
+			return firstName.concat(" ", lastName);
+		},
+		getPhoneNumber:function(){
+			return phoneNumber;
+		},
+		getPhoto:function(){
+			return photo;
+		},
+		setSettings:function(newFirstName, newLastName, newPhone, newPhoto){
+			firstName = newFirstName;
+			lastName = newLastName;
+			phoneNumber = newPhone;
+			photo = newPhoto;
+		}
+	}
+})
+
 .factory('Meetings', function() {
   // Might use a resource here that returns a JSON array
 
@@ -151,12 +176,7 @@ angular.module('starter.services', [])
     },
 	
     add: function(newName, newDescription, newDateTime, newFace, location) {
-	var maxId = 0;
-	for (index = 0; index < upcomingMeetings.length; ++index) {
-		if(maxId < upcomingMeetings[index].id)
-			maxId = upcomingMeetings[index].id;
-	  }
-	  maxId++;
+	  var maxId = upcomingMeetings[upcomingMeetings.length - 1] + 1;
 	  
       upcomingMeetings.push({
 		id: maxId,
@@ -233,4 +253,52 @@ angular.module('starter.services', [])
             return promise;
         }
     }
+})
+
+
+.factory('Chat', function() {
+	var messages = [{
+		dateTime:"25/09/2016 21:41",
+		text:"I don't want to load the photo",
+		name:"Eli Cohen",
+		photo: 'img/default.jpg',
+		phoneNumber:"0543332222"
+	},{
+		dateTime:"25/09/2016 20:52",
+		text:"Avi, hegzamta!",
+		name:"Sergey Naumenko",
+		photo: 'img/Sergey.jpg',
+		phoneNumber:"0543332222"
+	},{
+		dateTime:"25/09/2016 20:47",
+		text:"And this is the second :)",
+		name:"Dror Abraham",
+		photo: 'img/Dror.jpg',
+		phoneNumber:"0543332222"
+	},{
+		dateTime:"25/09/2016 20:46",
+		text:"Hey, guys! This is the first message...",
+		name:"Avi Asaf",
+		photo: 'img/Avi.jpg',
+		phoneNumber:"0543332222"
+	}];
+	
+  return {
+    getMessages: function() {
+      return messages;
+    },
+    add: function(newName, newPhoto, newPhoneNumber, newText) {
+	  
+      messages.unshift({
+		dateTime:new Date(),
+		text:newText,
+		name: newName,
+		photo:newPhoto,
+		phoneNumber:newPhoneNumber
+	  });
+	},
+	send:function(newName, newPhoto, newPhoneNumber, newText) {
+		add(newName, newPhoto, newPhoneNumber, newText);
+	}
+  }
 });
