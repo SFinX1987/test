@@ -81,7 +81,7 @@ angular.module('starter.controllers', [])
     };
 
 })
-.controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
+.controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings, $ionicPopup, $ionicPopover) {
   $scope.meeting = Meetings.get($stateParams.meetingId);
   $scope.ColorNeedARide = 'gray';
     
@@ -119,7 +119,20 @@ angular.module('starter.controllers', [])
 		else{
 			$scope.ColorNeedARide = 'gray';
 		}
-	} 
+	};
+	
+	$scope.AviEgzim = function(){
+		var alertPopup = $ionicPopup.alert({
+				title: 'עוד לא מימשתי את זה!!!',
+				template:'אבי, הגזמת...'
+			})
+	};
+	
+	$ionicPopover.fromTemplateUrl('templates/popup-upcoming-detail.html', {
+		scope: $scope,
+	}).then(function(popover) {
+		$scope.popover = popover;
+	}); 
 })
 
 .controller('PastCtrl', function($scope, Meetings,  $ionicPopup, $ionicPopover, $ionicFilterBar) {
@@ -181,9 +194,8 @@ angular.module('starter.controllers', [])
     // leave input field if google-address-entry is selected
     angular.element(container).on("click", function(){
         document.getElementById('Autocomplete').blur();
-    });
-  };
-	
+		});
+	};
 });
 
 
