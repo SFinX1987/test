@@ -167,7 +167,7 @@ angular.module('starter.services', [])
 		location: location,
 		creator:{
 			name: 'Sergey Naumenko',
-			face: 'img/Sergey.jpg'
+			face: 'img/default.jpg'
 		},
 		me:{
 			status:1
