@@ -108,9 +108,38 @@ angular.module('starter.services', [])
   }];
   var pastMeetings = [{
     id: 0,
-    name: 'Avi Asaf',
-    description: 'Fisrt meeting',
-    face: 'img/Avi.jpg'
+    name: 'First meeting',
+    description: 'This is our first meeting...',
+	startTime: '15/09/2016 21:00',
+	endTime: '15/09/2016 23:00',
+	location: 'Air caffe Airport city',
+    creator:{ 
+		name: 'Avi asaf',
+		face: 'img/Avi.jpg',
+		statusIcon: 'ion-checkmark-circled',
+		statusColor: 'green'
+	},
+	me:{
+		status: 0
+	},
+	participants:[{
+			name: 'Sergey Naumenko',
+			face: 'img/Sergey.jpg',
+			statusIcon: 'ion-checkmark-circled',
+			statusColor: 'green'
+		},{
+			name: 'Avi Asaf',
+			face: 'img/Avi.jpg',
+			statusIcon: 'ion-help-circled',
+			statusColor: 'blue'
+		},{
+			name: 'Dror Abraham',
+			face: 'img/Dror.jpg',
+			statusIcon: 'ion-close-circled',
+			statusColor: 'red'
+		}
+	]
+	
   }];
   
   return {

@@ -29,4 +29,11 @@
 .platform-android .bar-subheader{
   top:93px;
 }
-	
+
+ion-popover-view.fit {
+  height: auto;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative;
+}

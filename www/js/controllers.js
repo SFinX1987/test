@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('UpcomingCtrl', function($scope, Meetings, $ionicPopover, $ionicPopup) {
+.controller('UpcomingCtrl', function($scope, Meetings, $ionicPopover, $ionicPopup, $ionicFilterBar) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -61,6 +61,25 @@ angular.module('starter.controllers', [])
 				template:'אבי, הגזמת...'
 			})
 	};
+	
+	var filterBarInstance;
+
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.upcomingMeetings,
+        update: function (filteredItems, filterText) {
+          $scope.upcomingMeetings = filteredItems;
+          if (filterText) {
+            console.log(filterText);
+          }
+        },
+		expression: function (filterText, value, index, array) { 
+			var lowerFilterText = filterText.toLowerCase();
+			return value.name.toLowerCase().includes(lowerFilterText) || value.description.toLowerCase().includes(lowerFilterText) || value.creator.name.toLowerCase().includes(lowerFilterText) || value.location.toLowerCase().includes(lowerFilterText); 
+		}
+      });
+    };
+
 })
 .controller('UpcomingDetailCtrl', function($scope, $stateParams, Meetings) {
   $scope.meeting = Meetings.get($stateParams.meetingId);
@@ -103,7 +122,7 @@ angular.module('starter.controllers', [])
 	} 
 })
 
-.controller('PastCtrl', function($scope, Meetings,  $ionicPopup, $ionicPopover) {
+.controller('PastCtrl', function($scope, Meetings,  $ionicPopup, $ionicPopover, $ionicFilterBar) {
 	$scope.pastMeetings = Meetings.past();
 	
 	$scope.AviEgzim = function(){
@@ -119,6 +138,24 @@ angular.module('starter.controllers', [])
     $scope.popover = popover;
   });
   
+	var filterBarInstance;
+
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
+        items: $scope.pastMeetings,
+        update: function (filteredItems, filterText) {
+          $scope.pastMeetings = filteredItems;
+          if (filterText) {
+            console.log(filterText);
+          }
+        },
+		expression: function (filterText, value, index, array) { 
+			var lowerFilterText = filterText.toLowerCase();
+			return value.name.toLowerCase().includes(lowerFilterText) || value.description.toLowerCase().includes(lowerFilterText) || value.creator.name.toLowerCase().includes(lowerFilterText) || value.location.toLowerCase().includes(lowerFilterText); 
+		}
+      });
+    };
+
 })
 
 .controller('AddCtrl', function ($scope, $state, Meetings, $ionicPopup, $timeout) {
