@@ -7,9 +7,9 @@ section.chat div {
 section.chat p{
   margin: 0;
 }
-section.chats p.username{
+section.chat p.username{
   max-width: 255px;
-  font-weight: bold;
+  color: gray;
 }
 
 p.notification{

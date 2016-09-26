@@ -277,17 +277,13 @@ angular.module('starter.services', [])
 		phoneNumber:"0543332222"
 	},{
 		dateTime:"25/09/2016 20:46",
-		text:"Hey, guys! This is the first message...",
+		text:"Hey, guys! This is the first message! Its a bit long. I wrote it in order to check the multiple strings message!",
 		name:"Avi Asaf",
 		photo: 'img/Avi.jpg',
 		phoneNumber:"0543332222"
 	}];
 	
-  return {
-    getMessages: function() {
-      return messages;
-    },
-    add: function(newName, newPhoto, newPhoneNumber, newText) {
+	add = function(newName, newPhoto, newPhoneNumber, newText) {
 	  
       messages.unshift({
 		dateTime:new Date(),
@@ -296,7 +292,12 @@ angular.module('starter.services', [])
 		photo:newPhoto,
 		phoneNumber:newPhoneNumber
 	  });
-	},
+	};
+	
+  return {
+    getMessages: function() {
+      return messages;
+    },
 	send:function(newName, newPhoto, newPhoneNumber, newText) {
 		add(newName, newPhoto, newPhoneNumber, newText);
 	}

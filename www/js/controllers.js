@@ -224,7 +224,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.sendMessage = function(text){
-    Chat.sendMessage(Settings.getName(), Settings.getPhoto(), Settings.getPhoneNumber(),text);
+    Chat.send(Settings.getName(), Settings.getPhoto(), Settings.getPhoneNumber(),text);
     $scope.data.message = "";
   };
 
