@@ -39,8 +39,7 @@ angular.module('starter.services', [])
     creator:{ 
 		name: 'Sergey Naumenko',
 		face: 'img/Sergey.jpg',
-		statusIcon: 'ion-checkmark-circled',
-		statusColor: 'green'
+		status: 2
 	},
 	me:{
 		status: 0
@@ -48,18 +47,15 @@ angular.module('starter.services', [])
 	participants:[{
 			name: 'Sergey Naumenko',
 			face: 'img/Sergey.jpg',
-			statusIcon: 'ion-checkmark-circled',
-			statusColor: 'green'
+			status: 2
 		},{
 			name: 'Avi Asaf',
 			face: 'img/Avi.jpg',
-			statusIcon: 'ion-help-circled',
-			statusColor: 'blue'
+			status: 1
 		},{
 			name: 'Dror Abraham',
 			face: 'img/Dror.jpg',
-			statusIcon: 'ion-close-circled',
-			statusColor: 'red'
+			status: 0
 		}
 	]
 	
@@ -73,8 +69,7 @@ angular.module('starter.services', [])
     creator:{ 
 		name: 'Avi Asaf',
 		face: 'img/Avi.jpg',
-		statusIcon: 'ion-checkmark-circled',
-		statusColor: 'green'
+		status: 2
 	},
 	me:{
 		status: 1
@@ -82,18 +77,15 @@ angular.module('starter.services', [])
 	participants:[{
 			name: 'Sergey Naumenko',
 			face: 'img/Sergey.jpg',
-			statusIcon: 'ion-checkmark-circled',
-			statusColor: 'green'
+			status: 2
 		},{
 			name: 'Avi Asaf',
 			face: 'img/Avi.jpg',
-			statusIcon: 'ion-help-circled',
-			statusColor: 'blue'
+			status: 1
 		},{
 			name: 'Dror Abraham',
 			face: 'img/Dror.jpg',
-			statusIcon: 'ion-close-circled',
-			statusColor: 'red'
+			status: 0
 		}
 	]
   }, {
@@ -106,8 +98,7 @@ angular.module('starter.services', [])
     creator:{ 
 		name: 'Dror Abraham',
 		face: 'img/Dror.jpg',
-		statusIcon: 'ion-checkmark-circled',
-		statusColor: 'green'
+		status: 2
 	},
 	me:{
 		status: 2
@@ -115,18 +106,15 @@ angular.module('starter.services', [])
 	participants:[{
 			name: 'Sergey Naumenko',
 			face: 'img/Sergey.jpg',
-			statusIcon: 'ion-checkmark-circled',
-			statusColor: 'green'
+			status: 2
 		},{
 			name: 'Avi Asaf',
 			face: 'img/Avi.jpg',
-			statusIcon: 'ion-help-circled',
-			statusColor: 'blue'
+			status: 1
 		},{
 			name: 'Dror Abraham',
 			face: 'img/Dror.jpg',
-			statusIcon: 'ion-close-circled',
-			statusColor: 'red'
+			status: 0
 		}
 	]
 
@@ -141,8 +129,7 @@ angular.module('starter.services', [])
     creator:{ 
 		name: 'Avi asaf',
 		face: 'img/Avi.jpg',
-		statusIcon: 'ion-checkmark-circled',
-		statusColor: 'green'
+		status: 2
 	},
 	me:{
 		status: 0
@@ -150,18 +137,15 @@ angular.module('starter.services', [])
 	participants:[{
 			name: 'Sergey Naumenko',
 			face: 'img/Sergey.jpg',
-			statusIcon: 'ion-checkmark-circled',
-			statusColor: 'green'
+			status: 2
 		},{
 			name: 'Avi Asaf',
 			face: 'img/Avi.jpg',
-			statusIcon: 'ion-help-circled',
-			statusColor: 'blue'
+			status: 1
 		},{
 			name: 'Dror Abraham',
 			face: 'img/Dror.jpg',
-			statusIcon: 'ion-close-circled',
-			statusColor: 'red'
+			status: 0
 		}
 	]
 	
@@ -195,13 +179,11 @@ angular.module('starter.services', [])
 		participants:[{
 			name: 'Sergey Naumenko',
 			face: 'img/Sergey.jpg',
-			statusIcon: 'ion-checkmark-circled',
-			statusColor: 'green'
+			status:1
 			},{
 			name: 'Avi Asaf',
 			face: 'img/Avi.jpg',
-			statusIcon: 'ion-help-circled',
-			statusColor: 'blue'
+			status:1
 			}]
 		});	
 	  	

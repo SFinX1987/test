@@ -140,6 +140,16 @@ angular.module('starter.controllers', [])
 	}).then(function(popover) {
 		$scope.popover = popover;
 	}); 
+	
+	$scope.getPeopleCountByStatus = function(meeting, status){
+	  var result = 0;
+	  meeting.participants.forEach(function(participant, index){
+	    if(participant.status == status){
+			result++;
+		}
+	  });
+	  return result;
+	};
 })
 
 .controller('PastCtrl', function($scope, Meetings,  $ionicPopup, $ionicPopover, $ionicFilterBar) {
@@ -227,7 +237,6 @@ angular.module('starter.controllers', [])
     Chat.send(Settings.getName(), Settings.getPhoto(), Settings.getPhoneNumber(),text);
     $scope.data.message = "";
   };
-
 });
 
 function isEmpty(str) {

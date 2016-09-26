@@ -38,6 +38,13 @@
 .platform-android .bar-subheader{
   top:93px;
 }
+.peopleCount{
+	font-size: 14px;
+	color:gray;
+}
+.rowPeopleCount{
+	margin-bottom:0px;
+}
 
 ion-popover-view.fit {
   height: auto;

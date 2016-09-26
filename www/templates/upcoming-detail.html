@@ -21,21 +21,34 @@
       <div class="item">
         <p>{{meeting.description}}</p>
       </div>
-      
-      <div class="item row">
-		  <div class="tab-item col-33" ng-click="setStatus(0)">
-			  <i class="icon ion-close-circled" style="color:{{ColorNotGoing}}"></i>
-			  Not going
+      <p>
+		  <div class="row">
+			  <div class="tab-item col-33" ng-click="setStatus(0)">
+				  <i class="icon ion-close-circled" style="color:{{ColorNotGoing}}"></i>
+				  Not going
+			  </div>
+			  <div class="tab-item col-33" ng-click="setStatus(1)">
+				  <i class="icon big ion-help-circled" style="color:{{ColorNotSure}}"></i>
+				  Not sure
+			  </div>
+			  <div class="tab-item col-33" ng-click="setStatus(2)">
+				  <i class="icon ion-checkmark-circled" style="color:{{ColorGoing}}"></i>
+				  Going
+			  </div>
 		  </div>
-		  <div class="tab-item col-33" ng-click="setStatus(1)">
-			  <i class="icon big ion-help-circled" style="color:{{ColorNotSure}}"></i>
-			  Not sure
+		 
+		  <div class="row">
+			<div class="col-33 text-center" ng-click="AviEgzim()">
+				  <i class="icon ion-person peopleCount"> {{getPeopleCountByStatus(meeting, 0)}}</i>
+			  </div>
+			  <div class="col-33 text-center" ng-click="AviEgzim()">
+				  <i class="icon ion-person peopleCount"> {{getPeopleCountByStatus(meeting, 1)}}</i>
+			  </div>
+			  <div class="col-33 text-center" ng-click="AviEgzim()">
+				  <i class="icon ion-person peopleCount"> {{getPeopleCountByStatus(meeting, 2)}}</i>
+			  </div>
 		  </div>
-		  <div class="tab-item col-33" ng-click="setStatus(2)">
-			  <i class="icon ion-checkmark-circled" style="color:{{ColorGoing}}"></i>
-			  Going
-		  </div>
-	  </div>
+	  </p>
       <div class="item row">
 		  <div class="tab-item col-33">
 		  </div>
