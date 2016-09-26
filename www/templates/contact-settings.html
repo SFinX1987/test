@@ -1,7 +1,12 @@
 <ion-view view-title="Contact settings">
   <ion-content class="padding">
       <div class="list list-inset">
-	    <img src="img/default.jpg" class="photo-settings" />
+		<div class="settings-photo-div">
+			<img src="img/default.jpg" class="settings-photo" />
+			<button class="button button-icon button-photo color-blue" ng-click="WannaBanana()">
+				<i class="ion-camera"></i>
+			</button>
+		</div>
         <label class="item item-input">
             <input type="text" placeholder="First name" ng-model="data.FirstName">
         </label>
@@ -15,7 +20,4 @@
 	
 	  <button class="button button-block button-calm" ng-click="save()">Save</button>
   </ion-content>
-	<button class="button button-icon button-photo color-blue" ng-click="WannaBanana()">
-        <i class="ion-camera"></i>
-    </button>
 </ion-view>
